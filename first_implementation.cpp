@@ -4,8 +4,10 @@
 using namespace std;
 
 int main(){
-  //make sure to edit the directory
-    arma::mat data=Ein::Data::read_csv("/home/karar/Desktop/Ein_library/California_houses.csv");
+      //detect the file path
+    filesystem::path sourceDir = filesystem::path(__FILE__).parent_path();
+
+    arma::mat data=Ein::Data::read_csv(sourceDir / "California_houses.csv");
   cout<<"Date imported!"<<endl;
 
     Ein::Data::shuffle(data);
