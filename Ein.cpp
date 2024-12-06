@@ -133,8 +133,8 @@ arma::mat Min_Max_Scaler::transform(arma::mat& features, bool in_place){
         if (Maxs(col) == Mins(col)) {
             features_2.col(col) = 0;  
         } else {
-            features_2.each_row() -= Mins;  
-            features_2.each_row() /= (Maxs - Mins);  
+            features_2.each_col() -= Mins;
+            features_2.each_col() /= (Maxs - Mins);  
         }
     }
     return features_2;
@@ -144,8 +144,8 @@ arma::mat Min_Max_Scaler::transform(arma::mat& features, bool in_place){
         if (Maxs(col) == Mins(col)) {
             features.col(col) = 0;  
         } else {
-            features.each_row() -= Mins;  
-            features.each_row() /= (Maxs - Mins);  
+            features.each_col() -= Mins;
+            features.each_col() /= (Maxs - Mins);  
         }
     }
     return features; 
