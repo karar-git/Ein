@@ -107,7 +107,8 @@ void Q_Learning<environment>::reduce_epsilon() {
 template <typename environment>
 arma::mat Q_Learning<environment>::fit(environment& env) {
     create_bins(env.min_max_values);
-    arma::mat q_table = arma::zeros<arma::mat>(std::pow(num_bins_per_observation, n_observations), n_actions);
+    arma::mat q_table(std::pow(num_bins_per_observation, n_observations), n_actions);
+    q_table.fill(-4444);
     std::vector<int> state_visit_count(q_table.n_rows, 0);
     int action;
     arma::rowvec next_state;
